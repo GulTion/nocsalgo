@@ -48,7 +48,7 @@ function aPost(obj){
         aPost({...obj, url:obj.url+encodeURI(_.name)+"/"})
       }else{
         fs.appendFileSync("data.txt",`cd "${LOC+'/'+_.name}" && wget ${obj.url+encodeURI(_.name)}@@`)
-        console.log(`cd "${LOC+'/'+_.name}" && wget ${obj.url+encodeURI(_.name)}@@`)
+        console.log(`cd "${LOC}" && wget ${obj.url+encodeURI(_.name)}@@`)
       }
     }
   })
