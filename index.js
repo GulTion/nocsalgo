@@ -19,7 +19,7 @@ const LOC = LOC1+"/"+NAME
 
 
 
-fs.appendFileSync('data.txt', `cd "${LOC}" mkdir "${NAME}"`)
+fs.appendFileSync('data.txt', `cd "${LOC1}" mkdir "${NAME}"@@`)
 
 function Post(obj, callback){
   data = {q:"",password:null,page_token:obj.token,page_index:obj.index}
