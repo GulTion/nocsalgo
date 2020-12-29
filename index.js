@@ -54,12 +54,12 @@ function aPost(obj){
 }
 
 
-// aPost({
-//   url:URL,
-//   token:null,
-//   index:0,
-//   files:[]
-//   })
+aPost({
+  url:URL,
+  token:null,
+  index:0,
+  files:[]
+  })
 
 console.log({URL,USERNAME,PASS,LOC1})
 
