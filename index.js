@@ -44,13 +44,15 @@ function aPost(obj){
     for(let _ of e){
       if(_.mimeType=="application/vnd.google-apps.folder"){
           fs.appendFileSync("data.txt",`cd "${LOC+'/'+_.name}" && mkdir "${_.name}"@@`)
-    
+          console.log(`cd "${LOC+'/'+_.name}" && mkdir "${_.name}"@@`)
         aPost({...obj, url:obj.url+encodeURI(_.name)+"/"})
       }else{
         fs.appendFileSync("data.txt",`cd "${LOC+'/'+_.name}" && wget ${obj.url+encodeURI(_.name)}@@`)
+        console.log(`cd "${LOC+'/'+_.name}" && wget ${obj.url+encodeURI(_.name)}@@`)
       }
     }
   })
+
 }
 
 
@@ -61,7 +63,7 @@ aPost({
   files:[]
   })
 
-console.log({URL,USERNAME,PASS,LOC1})
+
 
 
 
