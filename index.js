@@ -19,7 +19,7 @@ const LOC = LOC1+"/"+NAME
 
 
 
-fs.appendFileSync('data.txt', `cd "${LOC1}" && mkdir "${NAME}"@@`)
+fs.appendFileSync('data.txt', `cd "${LOC1}" && mkdir "${NAME}"\n`)
 
 function Post(obj, callback){
   data = {q:"",password:null,page_token:obj.token,page_index:obj.index}
@@ -43,12 +43,12 @@ function aPost(obj){
   obj,e=>{
     for(let _ of e){
       if(_.mimeType=="application/vnd.google-apps.folder"){
-          fs.appendFileSync("data.txt",`cd "${LOC}" && mkdir "${_.name}"@@`)
-          console.log(`cd "${LOC}" && mkdir "${_.name}"@@`)
+          fs.appendFileSync("data.txt",`cd "${LOC}" && mkdir "${_.name}"\n`)
+          console.log(`cd "${LOC}" && mkdir "${_.name}"\n`)
         aPost({...obj,surl:_.name, url:obj.url+encodeURI(_.name)+"/"})
       }else{
-        fs.appendFileSync("data.txt",`cd "${LOC+'/'+obj.surl}" && wget ${obj.url+encodeURI(_.name)}@@`)
-        console.log(`cd "${LOC+'/'+obj.surl}" && wget ${obj.url+encodeURI(_.name)}@@`)
+        fs.appendFileSync("data.txt",`cd "${LOC+'/'+obj.surl}" && wget ${obj.url+encodeURI(_.name)}\n`)
+        console.log(`cd "${LOC+'/'+obj.surl}" && wget ${obj.url+encodeURI(_.name)}\n`)
       }
     }
   })
