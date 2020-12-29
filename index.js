@@ -1,15 +1,23 @@
 const axios  = require('axios');
 const btoa = require('btoa');
 const fs = require('fs');
-const URL = "https://csalgo.dark1.workers.dev/0:/Accelerated%20JavaScript%20Training/"
-const USERNAME = "GoaInquisition"
-const PASS = "GoaInquisition"
+
+//node index.js URL2 LOCATION3 USERNAME4 PASSWORD5
+
+const arg = process.argv
+
+const URL = arg[2]
+const USERNAME = arg[4]
+const PASS = arg[5]
 const TOKEN = btoa(USERNAME+":"+PASS);
-const LOC1 = "/content"
+const LOC1 = arg[3]
 
 const NAME = decodeURI(URL.split("/")[URL.split('/').length-2])
 
 const LOC = LOC1+"/"+NAME
+
+
+
 
 fs.appendFileSync('data.txt', `cd "${LOC}" mkdir "${NAME}"`)
 
@@ -46,13 +54,14 @@ function aPost(obj){
 }
 
 
-aPost({
-  url:URL,
-  token:null,
-  index:0,
-  files:[]
-  })
+// aPost({
+//   url:URL,
+//   token:null,
+//   index:0,
+//   files:[]
+//   })
 
+console.log({URL,USERNAME,PASS,LOC1})
 
 
 
