@@ -8,16 +8,7 @@ var argv = require('minimist')(process.argv.slice(2));
 const {log} = console
 
 
-//node index.js URL2 LOCATION3 USERNAME4 PASSWORD5
 
-// node index.js --url="https://archive.thehated7.workers.dev/0:/AlgoExpert.io/System%20Design%20Fundamentals/" --location=/test --username="@TheHatedOne" --password="@TheHatedOne"
-// {
-//   _: [],
-//   url: 'https://archive.thehated7.workers.dev/0:/AlgoExpert.io/System%20Design%20Fundamentals/',
-//   location: '/test',
-//   username: '@TheHatedOne',
-//   password: '@TheHatedOne'
-// }
 const URL = argv.url
 const USERNAME = argv.username
 const PASS = argv.password
@@ -136,8 +127,10 @@ function aPost(obj){
       if(_.mimeType=="application/vnd.google-apps.folder"){
           fs.appendFileSync("data.py",`os.system('cd "${LOC+'/'+obj.surl}" && mkdir "${_.name}"')\n`)
           // console.log(`cd "${LOC}" && mkdir "${_.name}"\n`)
-        aPost({...obj,surl:_.name, url:obj.url+encodeURI(_.name)+"/"})
+          // log(obj.url+encodeURI(_.name)+"/")
+        aPost({...obj,surl:obj.surl+_.name+'/', url:obj.url+encodeURI(_.name)+"/"})
       }else{
+        // log(obj.surl)
         fs.appendFileSync("data.py",`os.system("""cd "${LOC+'/'+obj.surl}" && wget -nc '${obj.url+encodeURI(_.name)}'""")\n`)
         // console.log(`cd "${LOC+'/'+obj.surl}" && wget ${obj.url+encodeURI(_.name)}\n`)
       }
