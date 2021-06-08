@@ -138,7 +138,7 @@ function aPost(obj){
           // console.log(`cd "${LOC}" && mkdir "${_.name}"\n`)
         aPost({...obj,surl:_.name, url:obj.url+encodeURI(_.name)+"/"})
       }else{
-        fs.appendFileSync("data.py",`os.system('cd "${LOC+'/'+obj.surl}" && wget -nc "${obj.url+encodeURI(_.name)}"')\n`)
+        fs.appendFileSync("data.py",`os.system("""cd "${LOC+'/'+obj.surl}" && wget -nc '${obj.url+encodeURI(_.name)}'""")\n`)
         // console.log(`cd "${LOC+'/'+obj.surl}" && wget ${obj.url+encodeURI(_.name)}\n`)
       }
     }
