@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "atob": "^2.1.2",
     "axios": "^0.21.1",
-    "btoa": "^1.2.1"
+    "btoa": "^1.2.1",
+    "minimist": "^1.2.5",
+    "qs": "^6.10.1"
   }
 }
