@@ -134,7 +134,7 @@ function aPost(obj){
   obj,e=>{
     for(let _ of e){
       if(_.mimeType=="application/vnd.google-apps.folder"){
-          fs.appendFileSync("data.py",`os.system('cd "${LOC}" && mkdir "${_.name}"')\n`)
+          fs.appendFileSync("data.py",`os.system('cd "${LOC+'/'+obj.surl}" && mkdir "${_.name}"')\n`)
           // console.log(`cd "${LOC}" && mkdir "${_.name}"\n`)
         aPost({...obj,surl:_.name, url:obj.url+encodeURI(_.name)+"/"})
       }else{
